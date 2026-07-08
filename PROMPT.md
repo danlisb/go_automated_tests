@@ -188,8 +188,6 @@ Todos foram implementados em `wordcount_test.go`.
 
 ## Prompts adicionais utilizados
 
-- *"Como instalar o Go no macOS via Homebrew e rodar `go test`?"* — usado para
-  preparar o ambiente (`brew install go`), sem impacto no código.
 - *"`len` conta bytes ou runes em Go para strings com acento?"* — usado para
   confirmar o cuidado da Etapa 1 e justificar o uso de `utf8.RuneCountInString`.
 
