@@ -1,0 +1,13 @@
+# Binários e artefatos de build do Go
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+*.test
+*.out
+
+# Diretórios de ferramentas/IDE
+.idea/
+.vscode/
+.claude/
