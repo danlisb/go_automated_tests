@@ -144,14 +144,16 @@ repetições e comparação completa do mapa.
 > maiúsculas, minúsculas e pontuação.
 
 **Casos sugeridos pela IA e implementados** (além do caso mínimo obrigatório —
-total de 4 casos, portanto mais de dois adicionais):
+total de 5 casos, portanto mais de dois adicionais):
 
 1. `texto vazio` → mapa vazio.
 2. `apenas palavras curtas` → todas com menos de 3 caracteres → mapa vazio.
 3. `repeticoes com maiusculas e pontuacao` → `Bola/BOLA/bola`, `Gato/GATO`,
    `rede rede` → `{bola:3, gato:3, rede:2}`.
+4. `palavras com numeros` → `html5`, `css3`, `go2`, `2024` mantidos; `42`
+   (2 dígitos) ignorado → `{html5:2, css3:1, versão:1, 2024:2, go2:1}`.
 
-Todos os três foram implementados em `wordcount_test.go`.
+Todos foram implementados em `wordcount_test.go`.
 
 ---
 
@@ -167,13 +169,15 @@ Todos os três foram implementados em `wordcount_test.go`.
 
 - Rodar `go vet` e `gofmt` para garantir formatação/lint (feito; sem apontamentos).
 - Documentar a limitação de que separadores quebram contrações/hifenizações.
-- Considerar (opcional) um caso com dígitos/números, já que a implementação
-  aceita dígitos como parte de palavra.
+- Considerar um caso com dígitos/números, já que a implementação aceita dígitos
+  como parte de palavra. **(Implementado** — caso `palavras com numeros`.)
 
 **Alterações feitas:**
 
 - Comentários explicativos adicionados em `wordcount.go` e `wordcount_test.go`.
 - Limitações documentadas no `README.md`.
+- Caso de teste com números adicionado (`palavras com numeros`), cobrindo
+  palavras alfanuméricas, número mantido (`2024`) e número curto ignorado (`42`).
 
 **Limitações conhecidas:**
 

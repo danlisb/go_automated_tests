@@ -68,6 +68,7 @@ o mapa esperado usando `reflect.DeepEqual`, de modo que **qualquer** diferença
 | `texto vazio`                            | Texto vazio deve produzir um mapa vazio.                                  |
 | `apenas palavras curtas`                 | Texto só com palavras de menos de 3 caracteres deve produzir mapa vazio.  |
 | `repeticoes com maiusculas e pontuacao`  | Mesma palavra em variações de maiúsculas/minúsculas e pontuação é normalizada e somada. |
+| `palavras com numeros`                   | Dígitos fazem parte da palavra: `html5`/`css3`/`go2` e o número `2024` (3+ dígitos) são contados; `42` (2 dígitos) é ignorado. |
 
 O caso mínimo obrigatório usa o texto:
 
@@ -100,11 +101,13 @@ $ go test -v ./...
 === RUN   TestCountWords/texto_vazio
 === RUN   TestCountWords/apenas_palavras_curtas
 === RUN   TestCountWords/repeticoes_com_maiusculas_e_pontuacao
+=== RUN   TestCountWords/palavras_com_numeros
 --- PASS: TestCountWords (0.00s)
     --- PASS: TestCountWords/caso_minimo_do_enunciado (0.00s)
     --- PASS: TestCountWords/texto_vazio (0.00s)
     --- PASS: TestCountWords/apenas_palavras_curtas (0.00s)
     --- PASS: TestCountWords/repeticoes_com_maiusculas_e_pontuacao (0.00s)
+    --- PASS: TestCountWords/palavras_com_numeros (0.00s)
 PASS
 ok  	github.com/danlisb/go_automated_tests	0.379s
 ```

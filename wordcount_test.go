@@ -56,6 +56,22 @@ func TestCountWords(t *testing.T) {
 				"rede": 2,
 			},
 		},
+		{
+			// Números são tratados como parte da palavra:
+			//   - palavras alfanuméricas (html5, css3, go2) são mantidas;
+			//   - um número puro com 3+ dígitos (2024) é contado;
+			//   - um número curto (42) é ignorado pela regra de tamanho mínimo;
+			//   - acentos continuam preservados (versão).
+			name:  "palavras com numeros",
+			input: "html5 html5 css3. Versão 2024, 2024! 42 é ok, go2.",
+			want: map[string]int{
+				"html5":  2,
+				"css3":   1,
+				"versão": 1,
+				"2024":   2,
+				"go2":    1,
+			},
+		},
 	}
 
 	for _, tt := range tests {
