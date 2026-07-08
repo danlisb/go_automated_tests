@@ -16,6 +16,7 @@ está em [`PROMPT.md`](./PROMPT.md).
 | `go.mod`              | Definição do módulo Go.                          |
 | `wordcount.go`        | Implementação da função `CountWords`.            |
 | `wordcount_test.go`   | Testes automáticos (`go test`).                  |
+| `cmd/wordcount/main.go` | Programa de demonstração executável (`go run`). |
 | `README.md`           | Este arquivo.                                    |
 | `PROMPT.md`           | Registro do uso da IA durante a atividade.       |
 
@@ -28,6 +29,21 @@ Pré-requisito: [Go](https://go.dev/dl/) instalado (versão 1.21 ou superior).
 go test          # execução simples
 go test -v       # execução detalhada, mostrando cada subteste
 ```
+
+## Executando a função (demonstração)
+
+Como `wordcount.go` é uma biblioteca (não tem `main`), há um pequeno programa
+de demonstração em `cmd/wordcount/` que imprime a frequência das palavras:
+
+```bash
+go run ./cmd/wordcount                          # usa o texto de exemplo do enunciado
+echo "seu texto aqui" | go run ./cmd/wordcount  # texto via stdin
+go run ./cmd/wordcount < arquivo.txt            # texto a partir de um arquivo
+```
+
+A saída é ordenada por bytes UTF-8 (não pela ordem alfabética do português),
+então palavras com acento aparecem por último. Isso afeta apenas a exibição; os
+testes comparam mapas e independem de ordem.
 
 ## A função `CountWords`
 
